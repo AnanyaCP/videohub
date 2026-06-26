@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VideoHub – YouTube Inspired UI Clone</title>
+  <!-- Google Fonts - Inter & Roboto -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Sticky Top Navigation Bar -->
+  <header class="header">
+    <div class="header-left">
+      <button class="icon-btn hover-effect" id="menu-btn" aria-label="Toggle Sidebar">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M21 6H3V5h18v1zm0 5H3v1h18v-1zm0 6H3v1h18v-1z"></path>
+        </svg>
+      </button>
+      <a href="#" class="logo-container" aria-label="VideoHub Home">
+        <!-- Premium VideoHub Custom Logo in SVG -->
+        <svg class="logo-svg" viewBox="0 0 110 20" fill="currentColor">
+          <g class="logo-play" fill="#FF0000">
+            <path d="M27.97 10.15c0 3.8-3.08 6.9-6.88 6.9H6.88C3.08 17.05 0 13.95 0 10.15v0c0-3.8 3.08-6.9 6.88-6.9h14.2c3.8 0 6.9 3.1 6.9 6.9v0z"></path>
+            <polygon fill="#FFFFFF" points="11.25,6.67 11.25,13.62 17.25,10.15"></polygon>
+          </g>
+          <text x="34" y="15" fill="#FFFFFF" font-family="'Inter', sans-serif" font-weight="800" font-size="14.5px" letter-spacing="-0.5px">VideoHub</text>
+        </svg>
+      </a>
+    </div>
+
+    <div class="header-center">
+      <form class="search-form" id="search-form" action="#" method="GET">
+        <div class="search-box">
+          <input type="text" id="search-input" placeholder="Search" aria-label="Search" autocomplete="off">
+          <button type="button" class="clear-btn" id="clear-search-btn" aria-label="Clear search" style="display: none;">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+            </svg>
+          </button>
+        </div>
+        <button class="search-btn hover-effect" id="search-btn" type="submit" aria-label="Submit Search">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+          </svg>
+          <span class="tooltip">Search</span>
+        </button>
+      </form>
+      <button class="icon-btn hover-effect mic-btn" id="mic-btn" aria-label="Search with your voice">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z M17.3 11c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"></path>
+        </svg>
+        <span class="tooltip">Search with your voice</span>
+      </button>
+    </div>
+
+    <div class="header-right">
+      <!-- Create/Upload Button -->
+      <button class="icon-btn hover-effect" id="create-btn" aria-label="Create">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4zM14 13h-3v3H9v-3H6v-2h3V8h2v3h3v2z"></path>
+        </svg>
+        <span class="tooltip">Create</span>
+      </button>
+
+      <!-- Notifications Icon -->
+      <button class="icon-btn hover-effect" id="notifications-btn" aria-label="Notifications">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 4.36 6 6.92 6 10v5l-2 2v1h16v-1l-2-2z"></path>
+        </svg>
+        <span class="badge">9+</span>
+        <span class="tooltip">Notifications</span>
+      </button>
+
+      <!-- Profile Avatar -->
+      <div class="profile-container" id="profile-container">
+        <button class="profile-avatar-btn" aria-label="User Account Profile">
+          <div class="avatar-ring">
+            <svg class="avatar-placeholder" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"></path>
+            </svg>
+          </div>
+        </button>
+        <!-- Mini Account Dropdown (Visual Only) -->
+        <div class="profile-dropdown" id="profile-dropdown">
+          <div class="dropdown-header">
+            <svg class="dropdown-avatar" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"></path></svg>
+            <div class="dropdown-user-info">
+              <p class="user-name">Guest User</p>
+              <p class="user-email">guest.user@example.com</p>
+            </div>
+          </div>
+          <hr class="dropdown-divider">
+          <ul class="dropdown-list">
+            <li><a href="#" class="dropdown-item">Your Channel</a></li>
+             <li><a href="#" class="dropdown-item">VideoHub Studio</a></li>
+            <li><a href="#" class="dropdown-item">Switch account</a></li>
+            <li><a href="#" class="dropdown-item">Sign out</a></li>
+            <hr class="dropdown-divider">
+            <li><a href="#" class="dropdown-item">Appearance: Device theme</a></li>
+            <li><a href="#" class="dropdown-item">Settings</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Layout Container (Sidebar + Content) -->
+  <div class="layout-body">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar expanded" id="sidebar">
+      <div class="sidebar-section">
+        <a href="#" class="sidebar-item active" data-tab="home">
+          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path>
+          </svg>
+          <span class="sidebar-text">Home</span>
+        </a>
+        <a href="#" class="sidebar-item" data-tab="shorts">
+          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M10 14.65v-5.3L15 12l-5 2.65zm7.77-5.33l-1.78-.95 1.78-.95c1.1-.59 1.52-1.96.93-3.06-.59-1.1-1.96-1.52-3.06-.93l-8.48 4.53C6.46 8.35 6 9.38 6 10.5c0 1.12.46 2.15 1.34 2.62l1.78.95-1.78.95c-1.1.59-1.52 1.96-.93 3.06.44.82 1.29 1.3 2.13 1.3.31 0 .63-.06.93-.22l8.48-4.53c.9-.48 1.38-1.5 1.38-2.62 0-1.12-.46-2.15-1.34-2.62z"></path>
+          </svg>
+          <span class="sidebar-text">Shorts</span>
+        </a>
+        <a href="#" class="sidebar-item" data-tab="subscriptions">
+          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.7 11c0-1.66-1.34-3-3-3h-7.4c-1.66 0-3 1.34-3 3v8c0 1.66 1.34 3 3 3h7.4c1.66 0 3-1.34 3-3v-8zm-1.7 0v8c0 .72-.58 1.3-1.3 1.3H8.3c-.72 0-1.3-.58-1.3-1.3v-8c0-.72.58-1.3 1.3-1.3h7.4c.72 0 1.3.58 1.3 1.3zm-6.2 5.5l4-2.5-4-2.5v5zM20 4H4v2h16V4zM18 1H6v2h12V1z"></path>
+          </svg>
+          <span class="sidebar-text">Subscriptions</span>
+        </a>
+      </div>
+      
+      <hr class="sidebar-divider">
+
+      <div class="sidebar-section">
+        <h3 class="sidebar-heading">Library</h3>
+        <a href="#" class="sidebar-item" data-tab="library">
+          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12zm-8-2.5l5.5-3.5-5.5-3.5v7z"></path>
+          </svg>
+          <span class="sidebar-text">Library</span>
+        </a>
+        <a href="#" class="sidebar-item" data-tab="history">
+          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"></path>
+          </svg>
+          <span class="sidebar-text">History</span>
+        </a>
+        <a href="#" class="sidebar-item" data-tab="your-videos">
+          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"></path>
+          </svg>
+          <span class="sidebar-text">Your Videos</span>
+        </a>
+        <a href="#" class="sidebar-item" data-tab="watch-later">
+          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm4.2 14.2L11 13V7h1.5v5.2l4.5 2.7-.8 1.3z"></path>
+          </svg>
+          <span class="sidebar-text">Watch Later</span>
+        </a>
+        <a href="#" class="sidebar-item" data-tab="liked-videos">
+          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1.91l-.01-.01L23 10z"></path>
+          </svg>
+          <span class="sidebar-text">Liked Videos</span>
+        </a>
+      </div>
+
+      <hr class="sidebar-divider">
+
+      <div class="sidebar-section">
+        <h3 class="sidebar-heading">Subscriptions</h3>
+        <!-- Dynamic Subscription List via CSS/HTML Mock Up -->
+        <a href="#" class="sidebar-item subscription-item">
+          <span class="sub-avatar text-avatar red-avatar">T</span>
+          <span class="sidebar-text">TechInsider</span>
+          <span class="live-dot"></span>
+        </a>
+        <a href="#" class="sidebar-item subscription-item">
+          <span class="sub-avatar text-avatar purple-avatar">M</span>
+          <span class="sidebar-text">Music Vibes</span>
+        </a>
+        <a href="#" class="sidebar-item subscription-item">
+          <span class="sub-avatar text-avatar green-avatar">C</span>
+          <span class="sidebar-text">CodeCraft</span>
+        </a>
+        <a href="#" class="sidebar-item subscription-item">
+          <span class="sub-avatar text-avatar blue-avatar">G</span>
+          <span class="sidebar-text">Gaming Hub</span>
+          <span class="live-dot"></span>
+        </a>
+        <a href="#" class="sidebar-item subscription-item">
+          <span class="sub-avatar text-avatar orange-avatar">C</span>
+          <span class="sidebar-text">Chef at Home</span>
+        </a>
+      </div>
+
+      <hr class="sidebar-divider">
+
+      <div class="sidebar-section">
+        <h3 class="sidebar-heading">Explore</h3>
+        <a href="#" class="sidebar-item">
+          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"></path>
+          </svg>
+          <span class="sidebar-text">Trending</span>
+        </a>
+        <a href="#" class="sidebar-item">
+          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"></path>
+          </svg>
+          <span class="sidebar-text">Music</span>
+        </a>
+        <a href="#" class="sidebar-item">
+          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M21 3H3C1.9 3 1 3.9 1 5v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 12H4V8h8v7zm7-3h-5V8h5v4z"></path>
+          </svg>
+          <span class="sidebar-text">Movies</span>
+        </a>
+        <a href="#" class="sidebar-item">
+          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 6.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 4.5 12 4.5s2.5 1.12 2.5 2.5S13.38 9.5 12 9.5zM12 11c2.33 0 7 1.17 7 3.5V16H5v-1.5c0-2.33 4.67-3.5 7-3.5z"></path>
+          </svg>
+          <span class="sidebar-text">Gaming</span>
+        </a>
+        <a href="#" class="sidebar-item">
+          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2zm0-4H7V7h10v2zm0 8H7v-2h10v2z"></path>
+          </svg>
+          <span class="sidebar-text">News</span>
+        </a>
+      </div>
+      
+      <hr class="sidebar-divider">
+      
+      <div class="sidebar-section">
+        <a href="#" class="sidebar-item">
+          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3-1.07-3-3s1.07-3 3-3 3 1.07 3 3-1.07 3-3 3z"></path>
+          </svg>
+          <span class="sidebar-text">Settings</span>
+        </a>
+      </div>
+      
+      <div class="sidebar-footer">
+        <p>About Press Copyright</p>
+        <p>Contact us Creators</p>
+        <p>Advertise Developers</p>
+        <br>
+        <p>Terms Privacy Policy & Safety</p>
+         <p>How VideoHub works</p>
+        <p>Test new features</p>
+        <br>
+        <p class="copyright">&copy; 2026 VideoHub. All Rights Reserved.</p>
+      </div>
+    </aside>
+
+    <!-- Content Area (Scrollable container containing tags & video grid) -->
+    <main class="content-wrapper sidebar-expanded" id="content-wrapper">
+      
+      <!-- Category Tag Filter Bar -->
+      <div class="categories-container" id="categories-container">
+        <button class="scroll-arrow-btn left-arrow" id="scroll-left-btn" aria-label="Scroll left">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
+          </svg>
+        </button>
+        
+        <div class="categories-bar" id="categories-bar">
+          <!-- Dynamically populated tags with JavaScript -->
+        </div>
+
+        <button class="scroll-arrow-btn right-arrow" id="scroll-right-btn" aria-label="Scroll right">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Video Grid Container -->
+      <div class="videos-grid" id="videos-grid">
+        <!-- Videos will be dynamically injected here using JavaScript -->
+      </div>
+      
+      <!-- Loading Skeleton Screen (visible during initial mock load) -->
+      <div class="skeleton-grid" id="skeleton-grid">
+        <!-- 12 Skeleton cards will be injected by JavaScript or rendered by default -->
+      </div>
+      
+      <!-- Bottom page footer -->
+      <footer class="content-footer">
+        <div class="footer-links">
+          <a href="#">About</a>
+          <a href="#">Contact</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms</a>
+        </div>
+        <p class="footer-copy">&copy; 2026 VideoHub</p>
+      </footer>
+      
+    </main>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
